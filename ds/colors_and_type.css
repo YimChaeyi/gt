@@ -1,0 +1,160 @@
+/* ============================================================================
+   Wanted Design System — Colors & Type
+   Layered on top of fig-tokens.css (raw Figma Variables).
+   This file adds: font loading, the canonical type scale, and convenient
+   semantic aliases for use across UI kits / slides / mocks.
+   ============================================================================ */
+
+@import url("./fig-tokens.css");
+
+/* ----------------------------------------------------------------------------
+   FONTS
+   Primary UI face: Pretendard JP  (KR / EN / JP — the product workhorse)
+   Brand / display : Wanted Sans   (used sparingly for branding & big numbers)
+   Mono            : SF Mono / system mono fallback (code, tokens)
+   Both Korean faces are open-source; loaded from their official jsDelivr CDNs.
+   If you need fully-offline assets, drop the .woff2 files into /fonts and swap
+   the @import lines for @font-face rules.
+   ---------------------------------------------------------------------------- */
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-jp.css");
+@import url("https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/variable/split/WantedSansVariable.css");
+
+:root {
+  /* ---- Font families ---- */
+  --font-sans: "Pretendard JP", "Pretendard", -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --font-brand: "Wanted Sans Variable", "Wanted Sans", "Pretendard JP", sans-serif;
+  --font-mono: "SF Mono", "SFMono-Regular", ui-monospace, "Menlo", "Consolas", monospace;
+
+  /* ---- Weights (Pretendard supports 100–900) ---- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ========================================================================
+     TYPE SCALE — Wanted "One" typography. 7 tiers, 19 sub-styles.
+     Each token bundles size / line-height / letter-spacing.
+     Naming: --t-<style>-{size|lh|ls}
+     ======================================================================== */
+  --t-display1-size: 56px;  --t-display1-lh: 72px;  --t-display1-ls: -0.0282em;
+  --t-display2-size: 40px;  --t-display2-lh: 52px;  --t-display2-ls: -0.0282em;
+  --t-display3-size: 36px;  --t-display3-lh: 48px;  --t-display3-ls: -0.027em;
+
+  --t-title1-size: 32px;    --t-title1-lh: 44px;    --t-title1-ls: -0.0253em;
+  --t-title2-size: 28px;    --t-title2-lh: 38px;    --t-title2-ls: -0.0236em;
+  --t-title3-size: 24px;    --t-title3-lh: 32px;    --t-title3-ls: -0.023em;
+
+  --t-heading1-size: 22px;  --t-heading1-lh: 30px;  --t-heading1-ls: -0.0194em;
+  --t-heading2-size: 20px;  --t-heading2-lh: 28px;  --t-heading2-ls: -0.012em;
+
+  --t-headline1-size: 18px; --t-headline1-lh: 26px; --t-headline1-ls: -0.002em;
+  --t-headline2-size: 17px; --t-headline2-lh: 24px; --t-headline2-ls: 0em;
+
+  --t-body1-size: 16px;     --t-body1-lh: 24px;     --t-body1-ls: 0.0057em;
+  --t-body1r-size: 16px;    --t-body1r-lh: 26px;    --t-body1r-ls: 0.0057em;
+  --t-body2-size: 15px;     --t-body2-lh: 22px;     --t-body2-ls: 0.0096em;
+  --t-body2r-size: 15px;    --t-body2r-lh: 24px;    --t-body2r-ls: 0.0096em;
+
+  --t-label1-size: 14px;    --t-label1-lh: 20px;    --t-label1-ls: 0.0145em;
+  --t-label1r-size: 14px;   --t-label1r-lh: 22px;   --t-label1r-ls: 0.0145em;
+  --t-label2-size: 13px;    --t-label2-lh: 18px;    --t-label2-ls: 0.0194em;
+
+  --t-caption1-size: 12px;  --t-caption1-lh: 16px;  --t-caption1-ls: 0.0252em;
+  --t-caption2-size: 11px;  --t-caption2-lh: 14px;  --t-caption2-ls: 0.0311em;
+
+  /* ========================================================================
+     SEMANTIC ALIASES — friendly names mapping onto the Figma token layer.
+     Use these in product code; they flip automatically in .dark / [data-theme].
+     ======================================================================== */
+  /* Brand */
+  --color-primary:        var(--blue-50);          /* #0066FF */
+  --color-primary-strong: var(--blue-45);          /* #005EEB */
+  --color-primary-heavy:  var(--blue-40);          /* #0054D1 */
+  --color-primary-bg:     var(--blue-95);          /* #EAF2FE */
+  --color-accent-violet:  var(--violet-50);        /* #6541F2 */
+
+  /* Text / label */
+  --fg-strong:      var(--common-0-2);             /* pure black */
+  --fg-normal:      var(--cool-neutral-10-2);      /* #171719 default text */
+  --fg-neutral:     rgba(46,47,51,0.88);
+  --fg-alternative: rgba(55,56,60,0.61);           /* secondary text */
+  --fg-assistive:   rgba(55,56,60,0.28);           /* tertiary / placeholder */
+  --fg-disable:     rgba(55,56,60,0.16);
+  --fg-on-primary:  var(--static-white);           /* text on blue */
+
+  /* Surfaces */
+  --bg-normal:      var(--common-100-2);           /* page white */
+  --bg-alternative: var(--cool-neutral-99-2);      /* #F7F7F8 subtle */
+  --bg-elevated:    var(--common-100-2);           /* card white */
+
+  /* Fills (translucent neutral chips / hovers) */
+  --fill-subtle:    rgba(112,115,124,0.05);
+  --fill-default:   rgba(112,115,124,0.08);
+  --fill-strong-a:  rgba(112,115,124,0.16);
+
+  /* Lines */
+  --line-subtle:    rgba(112,115,124,0.08);
+  --line-neutral:   rgba(112,115,124,0.16);
+  --line-normal:    rgba(112,115,124,0.22);
+  --line-strong:    rgba(112,115,124,0.52);
+
+  /* Status */
+  --status-positive:   var(--green-50);            /* #00BF40 */
+  --status-negative:   var(--red-50);              /* #FF4242 */
+  --status-cautionary: var(--orange-50);           /* #FF9200 */
+  --status-info:       var(--blue-50);
+
+  /* Radius scale (component-level) */
+  --r-xs: 6px;
+  --r-sm: 8px;
+  --r-md: 10px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-2xl: 20px;
+  --r-full: 999px;
+
+  /* Spacing scale (4-based) */
+  --sp-1: 4px;  --sp-2: 8px;  --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px;
+
+  /* Elevation — Wanted uses soft, low-spread neutral shadows */
+  --shadow-sm: 0 1px 2px rgba(23,23,23,0.06), 0 1px 3px rgba(23,23,23,0.07);
+  --shadow-md: 0 2px 8px rgba(23,23,23,0.08), 0 1px 2px rgba(23,23,23,0.06);
+  --shadow-lg: 0 4px 16px rgba(23,23,23,0.10), 0 2px 4px rgba(23,23,23,0.06);
+  --shadow-xl: 0 8px 28px rgba(23,23,23,0.12), 0 2px 6px rgba(23,23,23,0.08);
+}
+
+/* ============================================================================
+   TYPE UTILITY CLASSES
+   Apply directly: <h1 class="t-title1">…</h1>
+   ============================================================================ */
+.t-display1 { font-size: var(--t-display1-size); line-height: var(--t-display1-lh); letter-spacing: var(--t-display1-ls); font-weight: var(--weight-bold); }
+.t-display2 { font-size: var(--t-display2-size); line-height: var(--t-display2-lh); letter-spacing: var(--t-display2-ls); font-weight: var(--weight-bold); }
+.t-display3 { font-size: var(--t-display3-size); line-height: var(--t-display3-lh); letter-spacing: var(--t-display3-ls); font-weight: var(--weight-bold); }
+.t-title1 { font-size: var(--t-title1-size); line-height: var(--t-title1-lh); letter-spacing: var(--t-title1-ls); font-weight: var(--weight-bold); }
+.t-title2 { font-size: var(--t-title2-size); line-height: var(--t-title2-lh); letter-spacing: var(--t-title2-ls); font-weight: var(--weight-bold); }
+.t-title3 { font-size: var(--t-title3-size); line-height: var(--t-title3-lh); letter-spacing: var(--t-title3-ls); font-weight: var(--weight-bold); }
+.t-heading1 { font-size: var(--t-heading1-size); line-height: var(--t-heading1-lh); letter-spacing: var(--t-heading1-ls); font-weight: var(--weight-bold); }
+.t-heading2 { font-size: var(--t-heading2-size); line-height: var(--t-heading2-lh); letter-spacing: var(--t-heading2-ls); font-weight: var(--weight-semibold); }
+.t-headline1 { font-size: var(--t-headline1-size); line-height: var(--t-headline1-lh); letter-spacing: var(--t-headline1-ls); font-weight: var(--weight-semibold); }
+.t-headline2 { font-size: var(--t-headline2-size); line-height: var(--t-headline2-lh); letter-spacing: var(--t-headline2-ls); font-weight: var(--weight-semibold); }
+.t-body1 { font-size: var(--t-body1-size); line-height: var(--t-body1-lh); letter-spacing: var(--t-body1-ls); font-weight: var(--weight-medium); }
+.t-body1r { font-size: var(--t-body1r-size); line-height: var(--t-body1r-lh); letter-spacing: var(--t-body1r-ls); font-weight: var(--weight-regular); }
+.t-body2 { font-size: var(--t-body2-size); line-height: var(--t-body2-lh); letter-spacing: var(--t-body2-ls); font-weight: var(--weight-medium); }
+.t-body2r { font-size: var(--t-body2r-size); line-height: var(--t-body2r-lh); letter-spacing: var(--t-body2r-ls); font-weight: var(--weight-regular); }
+.t-label1 { font-size: var(--t-label1-size); line-height: var(--t-label1-lh); letter-spacing: var(--t-label1-ls); font-weight: var(--weight-medium); }
+.t-label1r { font-size: var(--t-label1r-size); line-height: var(--t-label1r-lh); letter-spacing: var(--t-label1r-ls); font-weight: var(--weight-regular); }
+.t-label2 { font-size: var(--t-label2-size); line-height: var(--t-label2-lh); letter-spacing: var(--t-label2-ls); font-weight: var(--weight-medium); }
+.t-caption1 { font-size: var(--t-caption1-size); line-height: var(--t-caption1-lh); letter-spacing: var(--t-caption1-ls); font-weight: var(--weight-medium); }
+.t-caption2 { font-size: var(--t-caption2-size); line-height: var(--t-caption2-lh); letter-spacing: var(--t-caption2-ls); font-weight: var(--weight-medium); }
+
+/* Base reset helpers */
+* { box-sizing: border-box; }
+body {
+  font-family: var(--font-sans);
+  color: var(--fg-normal);
+  background: var(--bg-normal);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
