@@ -226,3 +226,79 @@ input.gt-input.big { font-size: 17px; padding: 15px 16px; font-weight: 500; }
 .gt-disclaimer { margin-top: 48px; text-align: center; font-size: 12px; color: var(--fg-assistive); line-height: 1.6; }
 
 svg.ic { display: block; }
+
+/* ===============================================================
+   RESPONSIVE — mobile first
+   =============================================================== */
+
+/* 태블릿 이하 (768px) */
+@media (max-width: 768px) {
+  .gt-header-inner { padding: 0 16px; gap: 12px; }
+  .gt-nav a { padding: 6px 9px; font-size: 13px; }
+  .gt-offline { display: none; }
+
+  .gt-main { padding: 36px 16px 72px; }
+  .gt-hero { margin-bottom: 28px; }
+  .gt-hero h1 { font-size: 34px; }
+  .gt-hero p { font-size: 15px; }
+
+  .panel { padding: 20px; }
+  .history-list { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* 모바일 (480px) */
+@media (max-width: 480px) {
+  /* 헤더 — 브랜드 + nav만 */
+  .gt-header-inner { height: 56px; gap: 8px; }
+  .gt-brand-sub { display: none; }
+  .gt-nav { margin-left: 0; }
+  .gt-nav a { padding: 5px 8px; font-size: 12px; }
+
+  /* 히어로 */
+  .gt-main { padding: 28px 16px 64px; }
+  .gt-hero { margin-bottom: 22px; }
+  .gt-eyebrow { font-size: 12px; padding: 5px 11px; }
+  .gt-hero h1 { font-size: 28px; line-height: 1.22; margin-bottom: 10px; }
+  .gt-hero p { font-size: 14px; }
+
+  /* 카드 */
+  .card { border-radius: 16px; }
+  .panel { padding: 16px; }
+  .field { margin-bottom: 14px; }
+
+  /* 세그먼트 버튼 */
+  .seg button { padding: 7px 11px; font-size: 13px; }
+
+  /* 입력 */
+  textarea.gt-input { font-size: 14px; padding: 11px 13px; }
+  input.gt-input { font-size: 14px; padding: 11px 13px; }
+  input.gt-input.big { font-size: 15px; padding: 13px 14px; }
+
+  /* 결과 카드 */
+  .meaning { padding: 16px 18px; }
+  .meaning p { font-size: 17px; }
+  .result-grid { gap: 14px; }
+  /* 감정온도·위험도 세로 스택 */
+  .result-grid [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+  .said { font-size: 16px; }
+  .metric-card { padding: 14px; }
+
+  /* 대처법 */
+  .tips li { font-size: 14px; }
+
+  /* 푸터 */
+  .result-foot { flex-wrap: wrap; gap: 8px; }
+  .result-foot .ts { margin-left: 0; }
+
+  /* 히스토리 */
+  .history { margin-top: 28px; }
+  .history-list { grid-template-columns: 1fr; }
+  .hist-said { font-size: 14px; }
+
+  /* 번역 버튼 */
+  .gt-submit { font-size: 15px; padding: 13px; margin-top: 16px; }
+
+  .gt-disclaimer { font-size: 11px; margin-top: 36px; }
+}
